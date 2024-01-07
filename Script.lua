@@ -25,11 +25,15 @@ if not game:IsLoaded() then
 end;
 
 -- Shit
-if WrathAdminGuiMain == IsLoaded() then
-    if LocalPlayer.TeamColor.Name == "Medium grey" then
-        Notify("Failed!", "Please select a team")
-    end
-end        
+if game.Players.LocalPlayer.Team.BrickColor == BrickColor.new("Medium stone grey") then
+    game.StarterGui:SetCore("SendNotification", {
+        Title = "Error!";
+        Text = "Select a Team.";
+        Icon = "";
+    })
+    repeat task.wait() until game.LocalPlayer.Team.BrickColor ~= BrickColor.new("Medium stone grey")
+end;    
+
 -- Script:
 local Players = game:GetService("Players");
 local Teams = game.Teams;
